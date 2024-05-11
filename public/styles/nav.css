@@ -1,7 +1,9 @@
 .top-nav {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #FFFFFF;
   background-color: #4056A1;
   height: 120px;
   width: 100%;
@@ -12,9 +14,7 @@
   display: flex;
   justify-content: start;
   font-family: "Bungee", sans-serif;
-  color: #FFFFFF;
   font-size: 60px;
-  left: 1.5em;
   top: 0.6em;
 }
 
@@ -22,9 +22,7 @@
   font-family: "Source Sans 3", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: start;
   align-items: center;
-  color: #FFFFFF;
 }
 
 .icon {
