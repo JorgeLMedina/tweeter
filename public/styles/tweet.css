@@ -28,13 +28,12 @@ article .tweet-header {
 .tweet-name {
   display: flex;
   flex-direction: row;
-  justify-content: space-aroundend;
+  justify-content: space-around;
   align-items: center;
 }
 
-.fa-face-smile-wink {
+.image-newton {
   width: 70px;
-  font-size: 50px;
 }
 
 article .div-content {
@@ -74,26 +73,18 @@ article .div-content {
   color: #4056A1;
 }
 
-.flag-button {
-  border: none;
+.tweet-icons button:hover {
+  color: orange;
 }
 
-.flag-button:hover {
-  color: orange;
+.flag-button {
+  border: none;
 }
 
 .retweet-button {
   border: none;
 }
 
-.retweet-button:hover {
-  color: orange;
-}
-
 .heart-button {
   border: none;
-}
-
-.heart-button:hover {
-  color: orange;
 }
