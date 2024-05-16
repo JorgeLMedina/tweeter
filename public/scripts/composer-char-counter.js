@@ -1,6 +1,6 @@
 $(document).ready(function () {
   function updateCounter() {
-    let charCurrent = $("#tweet-text").val().length;
+    let charCurrent = $(this).val().length;
     let charMaxNumber = 140;
     let charRemaining = charMaxNumber - charCurrent;
     $('.counter').text(charRemaining);
@@ -12,7 +12,5 @@ $(document).ready(function () {
     }
   }
 
-  $("#tweet-text").on("input", function () {
-    updateCounter();
-  });
+  $("#tweet-text").on("input", updateCounter);
 });
