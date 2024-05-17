@@ -30,19 +30,21 @@ const data = [
   }
 ];
 
-//Returns the how many days ago the tweet was created
-function daysAgo(fileTimestamp) {
-  const currentDate = new Date();
-  const fileDate = new Date(fileTimestamp);
-  const differenceInMs = currentDate - fileDate;
+$(() => {
+  const $form = $(".form-inline");
+  //Returns the how many days ago the tweet was created
+  const daysAgo = function (fileTimestamp) {
+    const currentDate = new Date();
+    const fileDate = new Date(fileTimestamp);
+    const differenceInMs = currentDate - fileDate;
 
-  const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
-  return `${differenceInDays} days ago`
-}
+    const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+    return `${differenceInDays} days ago`
+  };
 
-//Adjust <article class="tweet"> filling it out with the selected object's data.
-const createTweetElement = function (obj) {
-  let $tweet = `
+  //Adjust <article class="tweet"> filling it out with the selected object's data.
+  const createTweetElement = function (obj) {
+    let $tweet = `
   <article class="tweet">
         <header class="tweet-header">
           <div class="tweet-name">
@@ -77,17 +79,36 @@ const createTweetElement = function (obj) {
       </article>
   `
 
-  return $tweet;
-};
+    return $tweet;
+  };
 
-// Loops through tweets, calls createTweetElement for each tweet and takes return value and appends it to the tweets container
-const renderTweets = function (tweets) {
-  for (const tweet of tweets) {
-    const $tweet = createTweetElement(tweet);
-    $('.tweet-container').append($tweet);
-  }
-};
+  // Loops through tweets, calls createTweetElement for each tweet and takes return value and appends it to the tweets container
+  const renderTweets = function (tweets) {
+    for (const tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $('.tweet-container').prepend($tweet);
+    }
+  };
 
-$(document).ready(function () {
   renderTweets(data);
+
+  $form.on("submit", (event) => {
+    event.preventDefault();
+
+    // grab data from the form
+    const data = $form.serialize();
+
+    // post data to tweet
+    $.ajax({
+      method: "POST",
+      url: '/tweets',
+      data: data,
+      success: () => {
+        console.log('SUCCESS!!!')
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  });
 });
