@@ -3,33 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-// Hardcoded objects
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png",
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1715651073765
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd"
-//     },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1715737473765
-//   }
-// ];
-
 $(() => {
   const $form = $(".form-inline");
 
@@ -93,17 +66,21 @@ $(() => {
     }
   };
 
-  $.ajax({
-    method: 'GET',
-    url: '/tweets',
-    success: (data) => {
-      console.log(data);
-      renderTweets(data);
-    },
-    error: (err) => {
-      console.log(err);
-    }
-  });
+  const loadTweets = () => {
+    $.ajax({
+      method: 'GET',
+      url: '/tweets',
+      success: (data) => {
+        console.log(data);
+        renderTweets(data);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  loadTweets();
 
   $form.on("submit", (event) => {
     event.preventDefault();
@@ -111,8 +88,8 @@ $(() => {
     // Edge cases
     if ($textArea.val().length > 140) {
       alert('Your post is too long! It should be 140 characters or less.');
-    } else if ($textArea.val().length === 0) {
-      console.log($textArea.val());
+    } else if ($textArea.val().trim().length === 0) {
+      console.log($textArea.val().trim());
       alert('Nothing to post! Post can\'t be blank');
     } else {
       // grab data from the form
@@ -125,6 +102,7 @@ $(() => {
         data: data,
         success: () => {
           console.log('SUCCESS!!!')
+          loadTweets(data);
         },
         error: (err) => {
           console.log(err);
