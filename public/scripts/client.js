@@ -5,42 +5,45 @@
  */
 
 // Hardcoded objects
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1715651073765
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1715737473765
-  }
-];
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png",
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1715651073765
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd"
+//     },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1715737473765
+//   }
+// ];
 
 $(() => {
   const $form = $(".form-inline");
-  //Returns the how many days ago the tweet was created
-  const daysAgo = function (fileTimestamp) {
-    const currentDate = new Date();
-    const fileDate = new Date(fileTimestamp);
-    const differenceInMs = currentDate - fileDate;
 
-    const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
-    return `${differenceInDays} days ago`
-  };
+  const $textArea = $('#tweet-text');
+
+  //Returns the how many days ago the tweet was created
+  // const daysAgo = function (fileTimestamp) {
+  //   const currentDate = new Date();
+  //   const fileDate = new Date(fileTimestamp);
+  //   const differenceInMs = currentDate - fileDate;
+
+  //   const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+  //   return `${differenceInDays} days ago`
+  // };
 
   //Adjust <article class="tweet"> filling it out with the selected object's data.
   const createTweetElement = function (obj) {
@@ -62,7 +65,7 @@ $(() => {
         </div>
         <footer class="below-tweet">
           <p>
-            ${daysAgo(obj.created_at)}
+            ${timeago.format(obj.created_at, 'en_US')}
           </p>
           <div class="tweet-icons">
             <button class="flag-button">
@@ -90,25 +93,44 @@ $(() => {
     }
   };
 
-  renderTweets(data);
+  $.ajax({
+    method: 'GET',
+    url: '/tweets',
+    success: (data) => {
+      console.log(data);
+      renderTweets(data);
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
 
   $form.on("submit", (event) => {
     event.preventDefault();
 
-    // grab data from the form
-    const data = $form.serialize();
+    // Edge cases
+    if ($textArea.val().length > 140) {
+      alert('Your post is too long! It should be 140 characters or less.');
+    } else if ($textArea.val().length === 0) {
+      console.log($textArea.val());
+      alert('Nothing to post! Post can\'t be blank');
+    } else {
+      // grab data from the form
+      const data = $form.serialize();
 
-    // post data to tweet
-    $.ajax({
-      method: "POST",
-      url: '/tweets',
-      data: data,
-      success: () => {
-        console.log('SUCCESS!!!')
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+      // post data to tweet
+      $.ajax({
+        method: "POST",
+        url: '/tweets',
+        data: data,
+        success: () => {
+          console.log('SUCCESS!!!')
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+
   });
 });
