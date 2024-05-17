@@ -8,16 +8,6 @@ $(() => {
 
   const $textArea = $('#tweet-text');
 
-  //Returns the how many days ago the tweet was created
-  // const daysAgo = function (fileTimestamp) {
-  //   const currentDate = new Date();
-  //   const fileDate = new Date(fileTimestamp);
-  //   const differenceInMs = currentDate - fileDate;
-
-  //   const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
-  //   return `${differenceInDays} days ago`
-  // };
-
   //Adjust <article class="tweet"> filling it out with the selected object's data.
   const createTweetElement = function (obj) {
     let $tweet = `
@@ -103,6 +93,7 @@ $(() => {
         success: () => {
           console.log('SUCCESS!!!')
           $('.tweet-container').empty();
+          $textArea.val('');
           loadTweets();
         },
         error: (err) => {
