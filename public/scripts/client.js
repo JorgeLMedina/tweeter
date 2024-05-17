@@ -102,7 +102,8 @@ $(() => {
         data: data,
         success: () => {
           console.log('SUCCESS!!!')
-          loadTweets(data);
+          $('.tweet-container').empty();
+          loadTweets();
         },
         error: (err) => {
           console.log(err);
