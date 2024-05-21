@@ -74,7 +74,17 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <section class="new-tweet">
-      <h2>Compose Tweet</h2>
+      <div class="non-valid-tweet-alert">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p>Your post is too long! It should be 140 characters or less.</p>
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div class="no-content-alert">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p>Nothing to post! Post can't be blank.</p>
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <!-- <h2>Compose Tweet</h2> -->
       <!-- Tweet Form -->
       <form class="form-inline" action="/tweets" method="POST">
         <!-- <label for="tweet-text"></label> -->

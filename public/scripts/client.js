@@ -8,6 +8,15 @@ $(() => {
 
   const $textArea = $('#tweet-text');
 
+  $(".non-valid-tweet-alert").hide();
+  $(".no-content-alert").hide();
+
+  const escape = function (str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   //Adjust <article class="tweet"> filling it out with the selected object's data.
   const createTweetElement = function (obj) {
     let $tweet = `
@@ -23,7 +32,7 @@ $(() => {
         </header>
         <div class="div-content">
           <p>
-            ${obj.content.text}
+            ${escape(obj.content.text)}
           </p>
         </div>
         <footer class="below-tweet">
@@ -75,12 +84,16 @@ $(() => {
   $form.on("submit", (event) => {
     event.preventDefault();
 
+
+
     // Edge cases
     if ($textArea.val().length > 140) {
-      alert('Your post is too long! It should be 140 characters or less.');
+      // alert('Your post is too long! It should be 140 characters or less.');
+      $(".non-valid-tweet-alert").slideDown(500).delay(3000).slideUp(500);
     } else if ($textArea.val().trim().length === 0) {
       console.log($textArea.val().trim());
-      alert('Nothing to post! Post can\'t be blank');
+      // alert('Nothing to post! Post can\'t be blank');
+      $(".no-content-alert").slideDown(500).delay(3000).slideUp(500);
     } else {
       // grab data from the form
       const data = $form.serialize();
