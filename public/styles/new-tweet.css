@@ -3,7 +3,7 @@
 }
 
 #tweet-text {
-  width: 90vw;
+  width: 100%;
   height: 3rem;
   background-color: inherit;
   border: none;
@@ -16,10 +16,10 @@
 .tweet-button {
   border: none;
   font-family: "Bungee", sans-serif;
-  font-size: 1.4rem;
+  font-size: 18px;
   color: #FFFFFF;
   background-color: #4056A1;
-  padding: 1.2% 1.8%;
+  padding: 5px 10px
 }
 
 .button-counter {

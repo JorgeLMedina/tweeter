@@ -5,6 +5,9 @@
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
 
+  <!-- Viewport zooming disabled -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
   <!--Font awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -59,44 +62,44 @@
     </div>
   </nav>
 
-  <!-- User avatar and name -->
-  <header id="main-header">
-    <div>
-      <img src="/images/profile-hex.png">
-    </div>
-    <div>
-      <h2>Jorge Medina</h2>
-    </div>
-    <div class="overlay">
-    </div>
-  </header>
+  <main>
+    <!-- User avatar and name -->
+    <header id="main-header">
+      <div class="avatar">
+        <img src="/images/profile-hex.png">
+      </div>
+      <div class="avatar-name">
+        <h2><b>Jorge</b> Medina</h2>
+      </div>
+    </header>
 
-  <!-- Page-specific (main) content here -->
-  <main class="container">
-    <section class="new-tweet">
-      <div class="non-valid-tweet-alert">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <p>Your post is too long! It should be 140 characters or less.</p>
-        <i class="fa-solid fa-triangle-exclamation"></i>
-      </div>
-      <div class="no-content-alert">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <p>Nothing to post! Post can't be blank.</p>
-        <i class="fa-solid fa-triangle-exclamation"></i>
-      </div>
-      <!-- <h2>Compose Tweet</h2> -->
-      <!-- Tweet Form -->
-      <form class="form-inline" action="/tweets" method="POST">
-        <!-- <label for="tweet-text"></label> -->
-        <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
-        <div class="button-counter">
-          <button class="tweet-button" type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
+    <!-- Page-specific (main) content here -->
+    <div class="container">
+      <section class="new-tweet">
+        <div class="non-valid-tweet-alert">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>Your post is too long! It should be 140 characters or less.</p>
+          <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
-      </form>
-    </section>
-    <section class="tweet-container">
-    </section>
+        <div class="no-content-alert">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>Nothing to post! Post can't be blank.</p>
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <!-- <h2>Compose Tweet</h2> -->
+        <!-- Tweet Form -->
+        <form class="form-inline" action="/tweets" method="POST">
+          <!-- <label for="tweet-text"></label> -->
+          <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
+          <div class="button-counter">
+            <button class="tweet-button" type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+      <section class="tweet-container">
+      </section>
+    </div>
   </main>
 </body>
 
