@@ -107,6 +107,7 @@ $(() => {
           console.log('SUCCESS!!!')
           $('.tweet-container').empty();
           $textArea.val('');
+          $('.counter').val('140');
           loadTweets();
         },
         error: (err) => {
