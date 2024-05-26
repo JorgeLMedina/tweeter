@@ -6,11 +6,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["Type into the comment area"](../tweeter/docs/01-typeInCommentArea.jpg)
-!["Click on the tweet button"](../tweeter/docs/02-clickOnTweet.jpg)
-!["Your tweet will be added to the timeline"](../tweeter/docs/03-tweetAddedToTimeline.jpg)
-!["Mobile and tablet screen"](../tweeter/docs/04-mobileAndTabletScreen.jpg)
-!["Desktop screen"](../tweeter/docs/05-desktopScreen.jpg)
+!["Type into the comment area"](https://github.com/JorgeLMedina/tweeter/blob/master/docs/01-typeInCommentArea.jpg?raw=true)
+!["Click on the tweet button"](https://github.com/JorgeLMedina/tweeter/blob/master/docs/02-clickOnTweet.jpg?raw=true)
+!["Your tweet will be added to the timeline"](https://github.com/JorgeLMedina/tweeter/blob/master/docs/03-tweetAddedToTimeline.jpg?raw=true)
+!["Mobile and tablet screen"](https://github.com/JorgeLMedina/tweeter/blob/master/docs/04-mobileAndTabletScreen.jpg?raw=true)
+!["Desktop screen"](https://github.com/JorgeLMedina/tweeter/blob/master/docs/05-desktopScreen.jpg?raw=true)
 
 ## Getting Started
 
